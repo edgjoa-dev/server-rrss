@@ -43,7 +43,8 @@ dotenv: Para cargar variables de entorno desde un archivo .env.
 express: Como framework web para Node.js.  
 express-validator: Para la validación de datos en Express.  
 moment: Para el manejo de fechas y horas.  
-mongoose: ODM (Object Data Modeling) para MongoDB.  
+mongoose: ODM (Object Data Modeling) para MongoDB.
+
 
 ### Nota!!!
 Talvez tengas algunos problemas para ejecutarlo, revisa la configuración de tsconfig.json  

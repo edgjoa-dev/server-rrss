@@ -3,18 +3,13 @@ import { check } from 'express-validator';
 
 import { fieldValidator } from '../middlewares/validate-fields.middleware'
 import { existEmail, existUserName, isRoleValid } from '../../utils';
-import { postUser } from '../controllers/user.controller';
+import { getAllUsers, postUser } from '../controllers/user.controller';
 
 
 const router = express.Router();
 
 
-router.get('/', (req = request, res = response) => {
-    res.status(200).json({
-        ok: true,
-        msg: 'Obtener todos los usuarios'
-    })
-})
+router.get('/', getAllUsers)
 
 router.get('/:id', (req = request, res = response) => {
     res.status(200).json({
