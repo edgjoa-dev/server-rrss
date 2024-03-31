@@ -9,7 +9,7 @@ Para instalar las dependencias del proyecto, asegúrate de tener Node.js y npm i
 ```
 npm install
 ```
-#Configuración
+# Configuración
 El proyecto utiliza variables de entorno para la configuración. Asegúrate de crear un archivo .env en la raíz del proyecto con las siguientes variables:
 
 ```
@@ -20,7 +20,7 @@ MONGODB_CNN=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 Asegúrate de reemplazar your_mongodb_uri y your_jwt_secret con tus propias configuraciones.
 ```
-#Uso
+# Uso
 Para iniciar el servidor en modo de desarrollo, puedes ejecutar:
 
 Copy code
@@ -30,7 +30,7 @@ npm run dev
 
 Esto iniciará el servidor utilizando nodemon para reiniciar automáticamente cuando se realicen cambios en el código.
 
-##Para iniciar el servidor en modo de producción, ejecuta:
+## Para iniciar el servidor en modo de producción, ejecuta:
 
 Copy code
 npm start
@@ -47,5 +47,5 @@ mongoose: ODM (Object Data Modeling) para MongoDB.
 Contribución
 ¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, por favor, siéntete libre de enviar pull requests.
 
-#Licencia
+# Licencia
 Este proyecto está bajo la licencia MIT.
