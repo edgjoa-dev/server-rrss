@@ -45,6 +45,18 @@ express-validator: Para la validación de datos en Express.
 moment: Para el manejo de fechas y horas.  
 mongoose: ODM (Object Data Modeling) para MongoDB.  
 
+### Nota!!!
+Talvez tengas algunos problemas para ejecutarlo, revisa la configuración de tsconfig.json  
+puedes probar instalando typescript y nodemon de forma global, esto tambien ayuda a usar importaciones  
+de forma:  
+```
+import { some } from '../server...'
+```
+comando de instalación  
+```
+npm i typescript -g
+npm i nodemon -g
+```
 
 ## Licencia
 Este proyecto está bajo la licencia MIT.
