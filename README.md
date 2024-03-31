@@ -34,8 +34,8 @@ Esto iniciará el servidor utilizando nodemon para reiniciar automáticamente cu
 yarn start
 ```
 
-Dependencias
-### El proyecto utiliza las siguientes dependencias principales:
+## Dependencias
+#### El proyecto utiliza las siguientes dependencias principales:
 
 bcrypt: Para el hashing de contraseñas.  
 cors: Para el manejo de CORS (Cross-Origin Resource Sharing).  
