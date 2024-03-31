@@ -37,17 +37,14 @@ yarn start
 Dependencias
 ### El proyecto utiliza las siguientes dependencias principales:
 
-bcrypt: Para el hashing de contraseñas.
-cors: Para el manejo de CORS (Cross-Origin Resource Sharing).
-dotenv: Para cargar variables de entorno desde un archivo .env.
-express: Como framework web para Node.js.
-express-validator: Para la validación de datos en Express.
-moment: Para el manejo de fechas y horas.
-mongoose: ODM (Object Data Modeling) para MongoDB.
+bcrypt: Para el hashing de contraseñas.  
+cors: Para el manejo de CORS (Cross-Origin Resource Sharing).  
+dotenv: Para cargar variables de entorno desde un archivo .env.  
+express: Como framework web para Node.js.  
+express-validator: Para la validación de datos en Express.  
+moment: Para el manejo de fechas y horas.  
+mongoose: ODM (Object Data Modeling) para MongoDB.  
 
-
-#### Contribución
-¡Las contribuciones son bienvenidas! Si deseas mejorar este proyecto, por favor, siéntete libre de enviar pull requests.
 
 ## Licencia
 Este proyecto está bajo la licencia MIT.
