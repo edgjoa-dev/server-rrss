@@ -57,6 +57,7 @@ comando de instalación
 ```
 npm i typescript -g
 npm i nodemon -g
+npm i ts-node -g
 ```
 
 ## Licencia
