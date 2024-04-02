@@ -3,7 +3,7 @@ import { check } from 'express-validator';
 
 import { fieldValidator } from '../middlewares/validate-fields.middleware'
 import { existEmail, existUserName, isRoleValid } from '../../utils';
-import { getAllUsers, postUser } from '../controllers/user.controller';
+import { getAllUsers, getUser, postUser } from '../controllers/user.controller';
 
 
 const router = express.Router();
@@ -11,12 +11,7 @@ const router = express.Router();
 
 router.get('/', getAllUsers)
 
-router.get('/:id', (req = request, res = response) => {
-    res.status(200).json({
-        ok: true,
-        msg: 'Obtener usuario buscado'
-    })
-})
+router.get('/:id', getUser)
 
 router.post('/', [
         check('name', 'El nombre es obligatorio, debe contener minimo 3 caracteres').not().isEmpty().isLength({ min: 3 }),
