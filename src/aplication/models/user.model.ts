@@ -1,7 +1,9 @@
 import { Schema,  model } from "mongoose";
+import { IUser } from "../../utils";
 
 
-const userSchema = new Schema({
+const userSchema = new Schema<IUser>(
+{
     name: {
         type: String,
         required: true,

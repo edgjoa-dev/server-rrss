@@ -1,9 +1,9 @@
-import { request, response } from "express";
+import { Request, Response } from "express";
 import User from "../../aplication/models/user.model";
 import bcryptjs from 'bcrypt'
 
 
-export const getAllUsers = async (req = request, res = response) => {
+export const getAllUsers = async (req:Request, res:Response) => {
     const { limit = 10, from = 0 } = req.query;
     const query = { state: true };
 
@@ -21,7 +21,7 @@ export const getAllUsers = async (req = request, res = response) => {
 }
 
 
-export const getUser = async (req = request, res = response) => {
+export const getUser = async (req:Request, res:Response) => {
 
     try {
         const { id } = req.params;
@@ -41,7 +41,7 @@ export const getUser = async (req = request, res = response) => {
 
     } catch (error) {
         console.log(error);
-        res.status(400).json({
+        return res.status(400).json({
             ok: false,
             msg: "Error al obtener usuario, contacte con el administrador"
         })
@@ -51,7 +51,7 @@ export const getUser = async (req = request, res = response) => {
 }
 
 
-export const postUser = async (req = request, res = response) => {
+export const postUser = async (req:Request, res:Response) => {
 
     const { name, user_name, email, password, role, bio = '', birth_day = Date, gender = 'HOMBRE', web_site = '', phone = '' } = req.body;
 
@@ -70,3 +70,48 @@ export const postUser = async (req = request, res = response) => {
         user,
     })
 };
+
+
+export const putUser = async (req:Request, res:Response) => {
+
+    try {
+        const { id } = req.params;
+        const { _id, password, google, email, ...resto } = req.body;
+
+        //*Validar contra base de datos
+        if (password) {
+            const salt = bcryptjs.genSaltSync();
+            resto.password = bcryptjs.hashSync(password, salt);
+        }
+        //*Actualizar usuario
+        await User.findByIdAndUpdate(id, resto);
+
+        //*Obtener usuario actualizado
+        const userUpdated = await User.findById(id)
+
+        return res.status(200).json({
+            userUpdated
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({
+            ok: false,
+            msg: "Error al obtener usuario, contacte con el administrador"
+        })
+    }
+
+}
+
+
+export const deleteUser = async (req:Request, res:Response) => {
+
+    const { id } = req.params;
+
+    const user = await User.findByIdAndUpdate(id, { state: false });
+    //const user = await User.findByIdAndDelete(id);
+    const userAuthennticated = req.body.user;
+
+
+    res.json({ user, userAuthennticated });
+}

@@ -1,9 +1,9 @@
-import express, { request, response } from 'express';
+import express from 'express';
 import { check } from 'express-validator';
 
-import { fieldValidator } from '../middlewares/validate-fields.middleware'
-import { existEmail, existUserName, isRoleValid } from '../../utils';
-import { getAllUsers, getUser, postUser } from '../controllers/user.controller';
+import { existEmail, existUserId, existUserName, isRoleValid } from '../../utils';
+import { deleteUser, getAllUsers, getUser, postUser, putUser } from '../controllers/user.controller';
+import { fieldValidator, haveRole, validarJWT } from '../middlewares';
 
 
 const router = express.Router();
@@ -11,7 +11,13 @@ const router = express.Router();
 
 router.get('/', getAllUsers)
 
-router.get('/:id', getUser)
+router.get('/:id', [
+    check('id', 'No es es un Id válido').isMongoId(),
+    check('id').custom(existUserId),
+    check('role').custom( isRoleValid ).not().isEmpty(),
+],
+    getUser
+)
 
 router.post('/', [
         check('name', 'El nombre es obligatorio, debe contener minimo 3 caracteres').not().isEmpty().isLength({ min: 3 }),
@@ -23,19 +29,24 @@ router.post('/', [
     postUser
 )
 
-router.put('/', (req = request, res = response) => {
-    res.status(200).json({
-        ok: true,
-        msg: 'Actualizar usuario',
-    })
-})
+router.put('/:id', [
+    check('id', 'No es es un Id válido').isMongoId(),
+    check('id').custom(existUserId),
+    check('role').custom( isRoleValid ).not().isEmpty(),
+    fieldValidator
+],
+    putUser
+)
 
-router.delete('/', (req = request, res = response) => {
-    res.status(200).json({
-        ok: true,
-        msg: 'Usuario eliminado',
-    })
-})
+router.delete('/:id', [
+    validarJWT,
+    haveRole('ADMIN_ROLE', 'USER_Role'),
+    check('id', 'No es es un Id válido').isMongoId(),
+    check('id').custom(existUserId),
+    fieldValidator
+],
+    deleteUser
+)
 
 
 module.exports = router;
