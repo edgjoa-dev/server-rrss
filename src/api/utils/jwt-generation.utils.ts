@@ -1,20 +1,26 @@
-import jwt from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 
-export const jwtGeneration = (uid = '') => {
+interface Payload {
+    uid: string;
+}
 
-    return new Promise(( resolve, reject ) => {
-        const payload = { uid };
+export const jwtGeneration = (uid: string = ''): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        const payload: Payload = { uid };
 
-        jwt.sign(payload, process.env.JWT_SECRET, {
+        jwt.sign(payload, process.env.JWT_SECRET as Secret, {
             expiresIn: '4h'
-        }, (error: string, token: string)=>{
-            if(error){
+        }, (error: Error | null, token?: string) => {
+            if (error) {
                 console.log(error);
                 reject('Error al crear token');
-            }else{
-                resolve(token);
+            } else {
+                if (token) {
+                    resolve(token);
+                } else {
+                    reject('No se generó un token');
+                }
             }
-        })
-    })
-
-}
+        });
+    });
+};
