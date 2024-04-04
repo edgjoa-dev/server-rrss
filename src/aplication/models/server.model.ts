@@ -7,13 +7,13 @@ export class Server {
     app: express.Application;
     port: string | number;
     pathUsers: string;
-    authPath?: string;
+    authPath: string;
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT || 3000;
         this.pathUsers = '/users';
-        //this.authPath = '/auth';
+        this.authPath = '/auth';
 
         //*Database connection
         this.databaseConnection();
@@ -47,7 +47,7 @@ export class Server {
 
     //*Routes of application
     routes(){
-        //this.app.use(this.authPath, require('../routes/auth'));
+        this.app.use(this.authPath, require('../../api/routes/auth.routes'));
         this.app.use(this.pathUsers, require('../../api/routes/user.routes'));
     }
 
