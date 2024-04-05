@@ -38,8 +38,6 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
         // Obtener el ID del usuario como cadena
         const uid: string = user._id.toString();
-        console.log("usuario:", user);
-        console.log("UID del usuario:", uid);
 
         // Generar JWT con el UID del usuario
         const token: string = await jwtGeneration(uid);

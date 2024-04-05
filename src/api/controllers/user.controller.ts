@@ -105,10 +105,11 @@ export const putUser = async (req:Request, res:Response) => {
 
 
 export const deleteUser = async (req: Request, res: Response): Promise<void> => {
-    const { uid } = req.params;
+    const { id } = req.params;
 
     try {
-        const user = await User.findByIdAndUpdate(uid, { state: false });
+        const user = await User.findByIdAndUpdate(id, { state: false });
+        console.log(user);
 
         if (!user) {
             res.status(404).json({ msg: 'Usuario no encontrado' });
