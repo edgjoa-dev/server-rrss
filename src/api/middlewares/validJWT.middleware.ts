@@ -5,7 +5,7 @@ import User from "../../aplication/models/user.model";
 
 export const validarJWT = async(req:Request, res:Response, next:NextFunction) => {
 
-const token = req.header('validate-token');
+const token = req.header('x-token');
 
     if(!token){
         return res.status(401).json({
@@ -15,7 +15,7 @@ const token = req.header('validate-token');
 
     try {
 
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY as string)as any;
+        const { uid } = jwt.verify(token, process.env.JWT_SECRET as string)as any;
 
 
         const user = await User.findById(uid);
