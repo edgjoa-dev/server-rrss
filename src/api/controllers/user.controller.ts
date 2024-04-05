@@ -104,14 +104,20 @@ export const putUser = async (req:Request, res:Response) => {
 }
 
 
-export const deleteUser = async (req:Request, res:Response) => {
+export const deleteUser = async (req: Request, res: Response): Promise<void> => {
+    const { uid } = req.params;
 
-    const { id } = req.params;
+    try {
+        const user = await User.findByIdAndUpdate(uid, { state: false });
 
-    const user = await User.findByIdAndUpdate(id, { state: false });
-    //const user = await User.findByIdAndDelete(id);
-    const userAuthennticated = req.body.user;
+        if (!user) {
+            res.status(404).json({ msg: 'Usuario no encontrado' });
+            return;
+        }
 
-
-    res.json({ user, userAuthennticated });
-}
+        res.json({ msg: 'Usuario eliminado correctamente' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: 'Hubo un error al intentar eliminar el usuario' });
+    }
+};
