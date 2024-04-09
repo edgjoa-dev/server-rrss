@@ -59,6 +59,55 @@ npm i typescript -g
 npm i nodemon -g
 npm i ts-node -g
 ```
+# Construir imagen de Docker.
+### Construye la imagen
+
+```
+docker build -t nombre-de-tu-imagen .
+```
+### Ejecuta un contenedor basado en la imagen
+
+```
+docker run -p 8080:8080 nombre-de-tu-imagen
+
+```
+
+### Nota!!!
+Asegurate de tener los scripts minimos dentro de package.json, como los siguientes:
+
+```
+{
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "nodemon ./src/app.ts",
+    "build": "tsc" // Agrega esta línea
+  },
+  // ...
+}
+
+```
+## Problemas de construcción en iamgen de Docker.  
+
+Si tienes algún problema en la construcción de la imagen de docker del proyecto,  
+verifica el archivo de configuración de tsconfig.json, debe contener por lo menos lo siguiente:
+
+```
+{
+  "compilerOptions": {
+    "target": "ES6", // O la versión de ECMAScript que prefieras
+    "module": "commonjs",
+    "outDir": "./dist", // Carpeta donde se guardarán los archivos compilados
+    "rootDir": "./src", // Carpeta donde se encuentra tu código fuente TypeScript
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*.ts"], // Patrón para incluir archivos TypeScript
+  "exclude": ["node_modules"] // Excluye la carpeta node_modules
+}
+
+```
+
 
 ## Licencia
 Este proyecto está bajo la licencia MIT.
