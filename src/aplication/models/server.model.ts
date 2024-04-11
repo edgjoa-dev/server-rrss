@@ -8,12 +8,14 @@ export class Server {
     port: string | number;
     pathUsers: string;
     authPath: string;
+    postPath: string;
 
     constructor() {
         this.app = express();
         this.port = process.env.PORT || 3000;
         this.pathUsers = '/users';
         this.authPath = '/auth';
+        this.postPath = '/post';
 
         //*Database connection
         this.databaseConnection();
@@ -49,6 +51,7 @@ export class Server {
     routes(){
         this.app.use(this.authPath, require('../../api/routes/auth.routes'));
         this.app.use(this.pathUsers, require('../../api/routes/user.routes'));
+        this.app.use(this.postPath, require('../../api/routes/post.routes'));
     }
 
     //*Listen server
