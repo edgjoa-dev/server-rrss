@@ -60,7 +60,7 @@ const userSchema = new Schema<IUser>(
     },
     createAT: {
         type: Date,
-        default: Date.now,
+        default: Date.now(),
     }
 })
 

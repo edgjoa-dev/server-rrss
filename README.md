@@ -1,3 +1,40 @@
+
+<h1 align="center">
+  <br>
+  <a href="https://nodejs.org/en/learn/getting-started/nodejs-with-typescript"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968322.png"alt="Nodejs" width="200"></a>
+  <br>
+  Backend NodeJS + Typescript
+  <br>
+</h1>
+
+<h4 align="center">Backend para red social tipo instagram creada con nodejs + typesript, express, mongoose, mongoDB</h4>
+
+<p align="center">
+  <a href="https://yarnpkg.com/">
+    <img src="https://img.shields.io/badge/Yarn-1.22.17-blue" alt="Yarn">
+  </a>
+  <a href="https://expressjs.com/">
+    <img src="https://img.shields.io/badge/Express-4.x-green" alt="Express">
+  </a>
+  <a href="https://mongoosejs.com/">
+    <img src="https://img.shields.io/badge/Mongoose-6.x-orange" alt="Mongoose">
+  </a>
+  <a href="https://www.mongodb.com/">
+    <img src="https://img.shields.io/badge/MongoDB-5.x-brightgreen" alt="MongoDB">
+  </a>
+</p>
+<!-- 
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p> -->
+
+![screenshot](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExanVvNmJrbnY5NmZsbjM1cXdlMjhzMWNtNzZhajNkb29yMTRkNnVyaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ES9cAJlcxblRESzOH1/giphy.gif)
+
 # Backend para Red Social tipo Instagram
 
 Este es el backend de una aplicación tipo red social, construido con Node.js y TypeScript.
@@ -108,6 +145,28 @@ verifica el archivo de configuración de tsconfig.json, debe contener por lo men
 
 ```
 
+## Dependencias
 
-## Licencia
-Este proyecto está bajo la licencia MIT.
+This software uses the following open source packages:
+
+- [Node.js](https://nodejs.org/)
+- [Express](https://yarnpkg.com/package?q=express&name=express)
+- [Mongoose](https://yarnpkg.com/package?q=mongoose&name=mongoose)
+- [Bcrypt](https://yarnpkg.com/package?q=bcrypt&name=bcrypt)
+- [Cors](https://yarnpkg.com/package?q=cors&name=cors)
+- [Dotenv](https://yarnpkg.com/package?q=dotenv&name=dotenv)
+- [Jsonwebtoken](https://yarnpkg.com/package?q=jsonwebtoken&name=jsonwebtoken)
+- [Moment](https://yarnpkg.com/package?q=moment&name=moment)
+
+
+
+## License
+
+MIT
+
+---
+
+> Twitter [@edgjoaflo](https://twitter.com/edgjoaflo)
+> Instagram [@flow_joa](https://www.instagram.com/flow_joa/)
+> FaceBook [Edgar Flores Gonzalez](https://www.facebook.com/profile.php?id=100087776117249)
+
