@@ -7,4 +7,5 @@ export interface IPost {
     createAt: Date;
     likes?: number;
     comments?: number;
+    state: boolean
 }
