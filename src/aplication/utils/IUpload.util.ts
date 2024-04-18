@@ -7,5 +7,5 @@ export interface IUploadedFile {
     truncated: boolean;
     mimetype: string;
     md5: string;
-    mv: () => void; // Función de mover el archivo
+    mv: (path: string, callback: (err: Error) => void) => void;
 }
