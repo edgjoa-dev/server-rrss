@@ -4,9 +4,6 @@ import User from '../../aplication/models/user.model';
 import Post from '../../aplication/models/post.model';
 
 export const uploadImage = async (req: Request, res: Response) => {
-    if (!req.files || Object.keys(req.files).length === 0 || !req.files.file) {
-        return res.status(400).send('No files were uploaded.');
-    }
 
     try {
         const pathComplete = await uploadFile(req.files,undefined, 'imgs');
@@ -59,7 +56,6 @@ export const updateImage = async( req: Request, res: Response )=> {
             msg: 'El nombre del archivo no es válido'
         });
     }
-
 
     await model.save();
 
