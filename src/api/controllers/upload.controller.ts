@@ -9,15 +9,15 @@ export const uploadImage = async (req: Request, res: Response) => {
     }
 
     try {
-        const pathComplete = await uploadFile(req.files);
-        console.log("🚀 ~ uploadImage ~ pathComplete:", req.files)
+        const pathComplete = await uploadFile(req.files,undefined, 'imgs');
+        console.log("🚀 ~ uploadImage ~ pathComplete:", pathComplete)
 
-        res.json({
+        return res.json({
             path: pathComplete,
         });
     } catch (error) {
         console.error('Error uploading file:', error);
-        res.status(500).send('Error uploading file.');
+        return res.status(500).send('Error uploading file.');
     }
 
 };

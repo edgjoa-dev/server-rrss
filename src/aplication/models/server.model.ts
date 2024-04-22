@@ -50,7 +50,8 @@ export class Server {
         //*UploadFile - cargar imagenes de publicaciones
         this.app.use(fileUpload({
             useTempFiles : true,
-            tempFileDir : '/tmp/'
+            tempFileDir : '/tmp/',
+            createParentPath: true
         }));
 
     }
