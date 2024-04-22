@@ -2,6 +2,9 @@ import { Request, Response } from 'express';
 import { uploadFile } from '../../utils';
 import User from '../../aplication/models/user.model';
 import Post from '../../aplication/models/post.model';
+import path from 'path';
+import fs from 'fs';
+
 
 export const uploadImage = async (req: Request, res: Response) => {
 
@@ -47,6 +50,14 @@ export const updateImage = async( req: Request, res: Response )=> {
                 msg: 'Se me olvido validar esto'
             })}
 
+    //*Limpiar imagenes previas
+    if (model.img) {
+        const pathImage = path.resolve(__dirname, '../uploads', colection, model.img);
+        if (fs.existsSync(pathImage)) {
+            fs.unlinkSync(pathImage);
+        }
+    }
+
     const name = await uploadFile(req.files, undefined, colection);
     if (typeof name === 'string') {
         model.img = name;
@@ -56,6 +67,7 @@ export const updateImage = async( req: Request, res: Response )=> {
             msg: 'El nombre del archivo no es válido'
         });
     }
+
 
     await model.save();
 
