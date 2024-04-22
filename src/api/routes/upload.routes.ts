@@ -11,7 +11,7 @@ router.post('/', uploadImage)
 
 router.put('/:colection/:id', [
     check('id', 'El id debe ser id válido de mongoDB').isMongoId(),
-    check('colection').custom((c: string) => allowColections(c, ['avatar', 'posts'])),
+    check('colection').custom((c: string) => allowColections(c, ['users', 'posts'])),
     fieldValidator,
 ], updateImage)
 
