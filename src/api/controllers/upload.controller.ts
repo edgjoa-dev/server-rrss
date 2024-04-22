@@ -10,8 +10,6 @@ export const uploadImage = async (req: Request, res: Response) => {
 
     try {
         const pathComplete = await uploadFile(req.files,undefined, 'imgs');
-        console.log("🚀 ~ uploadImage ~ pathComplete:", pathComplete)
-
         return res.json({
             path: pathComplete,
         });
@@ -21,3 +19,14 @@ export const uploadImage = async (req: Request, res: Response) => {
     }
 
 };
+
+export const updateImage = ( req: Request, res: Response )=> {
+
+    const {id, colection} = req.params;
+
+    res.status(200).json({
+        msg: 'updateImage',
+        id,
+        colection,
+    })
+}
