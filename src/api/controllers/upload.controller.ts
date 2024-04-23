@@ -113,6 +113,12 @@ export const showImage = async( req: Request, res:Response )=> {
         }
     }
 
+    if (!req.files || !req.files.file) {
+        // Si no hay archivos adjuntos en la solicitud, enviar la imagen genérica
+        const pathImage = path.join(__dirname, '../../assets/no-image.jpg');
+        return res.sendFile(pathImage);
+    }
+
     const name = await uploadFile(req.files, undefined, colection);
     if (typeof name === 'string') {
         model.img = name;
@@ -123,7 +129,6 @@ export const showImage = async( req: Request, res:Response )=> {
         });
     }
 
-
-    res.status(200).json({ msg: 'No hay imagen para mostrar - falta el placeholder' })
-
+    const pathImage = path.join(__dirname, '../../assets/no-image.jpg');
+    res.sendFile(pathImage);
 }

@@ -2,7 +2,7 @@
 node_modules
 
 #Carpeta contenedora de imágenes
-uploads/
+uploads/**.*
 
 #Variables de entorno
 .env
