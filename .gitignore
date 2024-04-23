@@ -1,6 +1,9 @@
 #Módulos de node
 node_modules
 
+#Carpeta contenedora de imágenes
+uploads/
+
 #Variables de entorno
 .env
 

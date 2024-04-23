@@ -1,4 +1,6 @@
 import express from "express";
+import { createPost } from "../controllers/post.controller";
+import { check } from "express-validator";
 
 const router = express.Router();
 
@@ -17,12 +19,10 @@ router.get("/:id", (req, res)=>{
     })
 })
 
-router.post("/", (req, res)=>{
-    res.status(200).json({
-        ok: true,
-        msg: "Crear post"
-    })
-})
+router.post("/:id", [
+    check('id',' El id es obligatorio').isMongoId(),
+    check('text', ' El texto es obligatorio').not().isEmpty(),
+], createPost)
 
 router.put("/:id", (req, res)=>{
     res.status(200).json({

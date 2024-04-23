@@ -2,22 +2,23 @@ import mongoose from 'mongoose';
 import { IPost } from '../utils';
 
 const postSchema = new mongoose.Schema<IPost>({
-    uid:{
+    uid: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    texto: {
+
+    text: {
         type: String,
     },
     img:{
         type: String,
         trim: true,
-        required: true
     },
     createAt:
     {
         type: Date,
+        default: Date.now,
         required: true
     },
     likes:{
